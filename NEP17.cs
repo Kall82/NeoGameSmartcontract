@@ -62,18 +62,28 @@ namespace Neo.SmartContract.Examples
             }
         }
 
-        public static new void Mint(UInt160 caller, UInt160 account, BigInteger amount)
+        public static void Mint(UInt160 caller, UInt160 account, BigInteger amount)
         {
             UInt160 minter = GetMinter(caller);
             ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
             Nep17Token.Mint(account, amount);
         }
 
-        public static new void Burn(UInt160 caller, UInt160 account, BigInteger amount)
+        public static void Burn(UInt160 caller, UInt160 account, BigInteger amount)
         {
             UInt160 minter = GetMinter(caller);
             ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
             Nep17Token.Mint(account, amount);
+        }
+
+        public static new void Mint(UInt160 account, BigInteger amount)
+        {
+           // do nothing
+        }
+
+        public static new void Burn(UInt160 account, BigInteger amount)
+        {
+            // do nothing
         }
 
         public static bool Update(ByteString nefFile, string manifest)
