@@ -18,15 +18,16 @@ namespace Neo.SmartContract.Examples
         private static readonly UInt160 owner = default;
         // Prefix_TotalSupply = 0x00; Prefix_Balance = 0x01;
         private const byte Prefix_Contract = 0x02;
+        private const byte Prefix_Minter = 0x03;
         public static readonly StorageMap ContractMap = new StorageMap(Storage.CurrentContext, Prefix_Contract);
-        public static readonly StorageMap MinterMap = new StorageMap(Storage.CurrentContext, "Minter");
+        public static readonly StorageMap MinterMap = new StorageMap(Storage.CurrentContext, Prefix_Minter);
 
         private static readonly byte[] ownerKey = "owner".ToByteArray();
         private static bool IsOwner() => Runtime.CheckWitness(GetOwner());
         public override byte Decimals() => Factor();
 
         public static string Name() => "Cryptomon Coin";
-        public override string Symbol() => "Coin";
+        public override string Symbol() => "MONCOIN";
 
         public static byte Factor() => 8;
 
@@ -44,25 +45,40 @@ namespace Neo.SmartContract.Examples
 
         public static bool IsMinter(UInt160 account)
         {
+            BigInteger value = (BigInteger)MinterMap.GetObject(account);
+            return value == 1;
+        }
+
+        public static UInt160 GetMinter(UInt160 account)
+        {
             var value = MinterMap.Get(account);
-            return value == "true";
+            return value != null ? account : null;
         }
 
         public static void SetMinter(UInt160 account, bool canMint)
         {
             if (!IsOwner()) throw new InvalidOperationException("No Authorization!");
-            MinterMap.Put(account, canMint.ToString());
+            if (canMint)
+            {
+                MinterMap.Put(account, "");
+            }
+            else
+            {
+                MinterMap.Delete(account);
+            }
         }
 
-        public static new void Mint(UInt160 account, BigInteger amount)
-        {         
-            if (!IsMinter(Runtime.CallingScriptHash)) throw new InvalidOperationException("No Authorization!");
+        public static new void Mint(UInt160 caller, UInt160 account, BigInteger amount)
+        {
+            UInt160 minter = GetMinter(caller);
+            ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
             Nep17Token.Mint(account, amount);
         }
 
-        public static new void Burn(UInt160 account, BigInteger amount)
+        public static new void Burn(UInt160 caller, UInt160 account, BigInteger amount)
         {
-            if (!IsMinter(Runtime.CallingScriptHash)) throw new InvalidOperationException("No Authorization!");
+            UInt160 minter = GetMinter(caller);
+            ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
             Nep17Token.Mint(account, amount);
         }
 
