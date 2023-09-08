@@ -43,12 +43,6 @@ namespace Neo.SmartContract.Examples
             return (UInt160)ContractMap.Get(ownerKey);
         }
 
-        public static bool IsMinter(UInt160 account)
-        {
-            BigInteger value = (BigInteger)MinterMap.GetObject(account);
-            return value == 1;
-        }
-
         public static UInt160 GetMinter(UInt160 account)
         {
             var value = MinterMap.Get(account);
