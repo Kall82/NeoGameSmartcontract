@@ -84,16 +84,6 @@ namespace NeoNft
             Nep11Token<MyTokenState>.Burn(tokenId);
         }
 
-        protected static new void Mint(ByteString tokenId, Nep11TokenState token)
-        {
-            // do nothing
-        }
-
-        protected static new void Burn(ByteString tokenId)
-        {
-            // do nothing
-        }
-
         public static bool Main()
         {
             return true;

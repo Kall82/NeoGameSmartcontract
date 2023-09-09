@@ -74,17 +74,7 @@ namespace Neo.SmartContract.Examples
             UInt160 minter = GetMinter(caller);
             ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
             Nep17Token.Burn(account, amount);
-        }
-
-        public static new void Mint(UInt160 account, BigInteger amount)
-        {
-           // do nothing
-        }
-
-        public static new void Burn(UInt160 account, BigInteger amount)
-        {
-            // do nothing
-        }
+        }      
 
         public static bool Update(ByteString nefFile, string manifest)
         {
