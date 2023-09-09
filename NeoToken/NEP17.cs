@@ -27,7 +27,7 @@ namespace Neo.SmartContract.Examples
         public override byte Decimals() => Factor();
 
         public static string Name() => "Cryptomon Coin";
-        public override string Symbol() => "MONCOIN";
+        public override string Symbol() => "CMONCOIN";
 
         public static byte Factor() => 8;
 
@@ -73,7 +73,7 @@ namespace Neo.SmartContract.Examples
         {
             UInt160 minter = GetMinter(caller);
             ExecutionEngine.Assert(Runtime.CheckWitness(minter), "Not a minter!");
-            Nep17Token.Mint(account, amount);
+            Nep17Token.Burn(account, amount);
         }
 
         public static new void Mint(UInt160 account, BigInteger amount)

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoSmartcontract", "NeoSmartcontract.csproj", "{58B0AED1-E8EA-4AC2-B50C-3EED471E0B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoNft", "NeoNft\NeoNft.csproj", "{127C1C36-2D95-4BDF-ADEA-8FF6ABCCEDC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoSmartcontract", "NeoToken\NeoSmartcontract.csproj", "{86FBCAE7-D18C-4811-9877-9C3C5338EED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{58B0AED1-E8EA-4AC2-B50C-3EED471E0B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58B0AED1-E8EA-4AC2-B50C-3EED471E0B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58B0AED1-E8EA-4AC2-B50C-3EED471E0B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58B0AED1-E8EA-4AC2-B50C-3EED471E0B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127C1C36-2D95-4BDF-ADEA-8FF6ABCCEDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127C1C36-2D95-4BDF-ADEA-8FF6ABCCEDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127C1C36-2D95-4BDF-ADEA-8FF6ABCCEDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127C1C36-2D95-4BDF-ADEA-8FF6ABCCEDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86FBCAE7-D18C-4811-9877-9C3C5338EED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86FBCAE7-D18C-4811-9877-9C3C5338EED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86FBCAE7-D18C-4811-9877-9C3C5338EED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86FBCAE7-D18C-4811-9877-9C3C5338EED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
