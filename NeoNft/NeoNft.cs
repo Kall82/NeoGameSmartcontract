@@ -17,7 +17,7 @@ namespace NeoNft
 
         public string Image
         {
-            get { return Storage.Get(Storage.CurrentContext, "Link") + image + ".jpg"; }
+            get { return Storage.Get(Storage.CurrentContext, "Link") + image + ".png"; }
             set { image = value; }
         }
 
@@ -50,6 +50,13 @@ namespace NeoNft
 
         public static string Name() => "Cryptomonster NFT";
         public override string Symbol() => "CMONSTER";
+
+        public static void _deploy(object data, bool update)
+        {
+            if (update) return;
+            Storage.Put(Storage.CurrentContext, "Link", "https://cryptomon.azurewebsites.net/api/nft/image/");
+        }
+
 
         public static UInt160 GetMinter(UInt160 account)
         {
